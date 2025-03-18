@@ -4,10 +4,10 @@ A high-performance Rust-based shellcode launcher featuring AES decryption and re
 
 ## Features
 
-- **AES Encryption**: Securely encrypts and decrypts shellcode for enhanced security.
-- **Remote Fetching**: Retrieves shellcode dynamically from a remote server.
-- **Stealth Execution**: Runs shellcode with minimal detection footprint.
-- **Performance Optimized**: Written in Rust for speed and memory safety.
+- **AES-256 Encryption & Decryption**: Secure shellcode execution using AES-256-CBC.
+- **Remote Fetching**: Retrieves encrypted shellcode and decryption keys dynamically from a remote server.
+- **Memory Allocation & Execution**: Uses Windows API functions (`VirtualAlloc`, `VirtualProtect`, `CreateThread`, `WaitForSingleObject`) for shellcode execution.
+- **Obfuscation Support**: Implements `obfstr!` for string obfuscation.
 
 ## Installation
 
@@ -20,7 +20,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 Clone the repository:
 
 ```sh
-git clone https://github.com/Kuasera/rust-shell-launcher.git
+git clone https://github.com/kuasera/rust-shell-launcher.git
 cd rust-shell-launcher
 ```
 
@@ -30,11 +30,16 @@ Build the project:
 cargo build --release --target x86_64-pc-windows-gnu
 ```
 
-## Usage
+The program will fetch the encrypted shellcode and decryption key from the provided remote URLs, decrypt the shellcode, allocate executable memory, and execute it in a new thread.
 
-```sh
-./target/release/rust-shell-launcher.exe <encrypted_shellcode> <key.txt>
-```
+⚠️ **Make sure to replace the `key.txt link` and `shellcode.bin link` with your own before running the program!**
+
+## Windows API Functions Used
+
+- `VirtualAlloc`: Allocates memory for the decrypted shellcode.
+- `VirtualProtect`: Changes memory permissions to executable.
+- `CreateThread`: Creates a new thread to execute the shellcode.
+- `WaitForSingleObject`: Waits for thread completion.
 
 ## Disclaimer
 
