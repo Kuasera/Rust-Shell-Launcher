@@ -1,6 +1,6 @@
 # Rust-Shell-Launcher
 
-A high-performance Rust-based shellcode launcher featuring AES decryption and remote fetching capabilities. This project demonstrates secure execution techniques with encrypted payloads, emphasizing stealth and efficiency.
+A high-performance Rust-based shellcode launcher featuring AES decryption and remote fetching capabilities. This project demonstrates secure execution techniques with encrypted payloads, emphasizing stealth and efficiency. 
 
 ## Features
 
